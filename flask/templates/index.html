@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SoulSpeak.ai</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>💙🌟 SoulSpeak.ai - Your Emotional Support AI 🌟💙</h1>
+
+    <form action="/process" method="post">
+        <input type="text" name="name" placeholder="Your Name" required 
+               pattern="[A-Za-z\s]+" title="Name should only contain letters and spaces">
+        <input type="number" name="age" placeholder="Your Age" required min="1" max="120">
+        <textarea name="feeling" placeholder="How are you feeling today?" required></textarea><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if name %}
+    <div class="response-box {{ emotion }}">
+        <h2>Hi {{name}} 💙</h2>
+        <h1>Detected Emotion : {{emotion}}</h1>
+        <p>{{response}}</p>
+    </div>
+    {% endif %}
+
+</body>
+</html>
